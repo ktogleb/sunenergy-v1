@@ -1,0 +1,1084 @@
+/* ==========================================================================
+   SUN Energy — landing (Figma: Design / frame "9", 1920 × 2495)
+   All sizes below are the exact Figma pixel values. The .page element is
+   scaled to the viewport width in js/main.js, so nothing here is fluid.
+   ========================================================================== */
+
+/* ---------- Design tokens (mirror the Figma variables) ---------- */
+:root {
+  /* Primitives */
+  --orange-500: #f97316;
+  --neutral-950: #02040a;
+  --white: #ffffff;
+  --black: #000000;
+  --white-a70: rgba(255, 255, 255, 0.7);
+  --white-a50: rgba(255, 255, 255, 0.5);
+  --white-a10: rgba(255, 255, 255, 0.1);
+  --neutral-950-a45: rgba(2, 4, 10, 0.45);
+  --white-a20: rgba(255, 255, 255, 0.2);
+
+  /* Tokens */
+  --bg-page: var(--neutral-950);
+  --bg-accent: var(--orange-500);
+  --bg-glass: var(--white-a10);
+  --bg-scrim: var(--neutral-950-a45);   /* under text that sits on bright, moving art */
+  --bg-inverse: var(--white);
+  --text-primary: var(--white);
+  --text-secondary: var(--white-a70);
+  --text-accent: var(--orange-500);
+  --text-inverse: var(--neutral-950);
+  --border-default: var(--white-a50);
+  --border-strong: var(--white);
+
+  /* Typography — Figma "Typography" collection, mode Desktop */
+  --fs-h1: 64px;
+  --fs-h2: 48px;
+  --fs-subtitle-l: 32px;
+  --lh-subtitle-l: 42px;
+  --fs-subtitle-m: 24px;
+  --lh-subtitle-m: 31px;
+  --fs-title-m: 24px;
+  --lh-title-m: 31px;
+  --fs-body-l: 20px;
+  --lh-body-l: 26px;
+  --fs-label-button: 18px;
+  --fs-label-nav: 16px;
+  --fs-label-phone: 16px;
+  --font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg-page);
+  color-scheme: dark;                   /* native scrollbars, form controls */
+  scrollbar-color: var(--white-a20) var(--bg-page);
+  -webkit-text-size-adjust: 100%;
+}
+
+::selection {
+  background: var(--bg-accent);
+  color: var(--text-inverse);
+}
+
+body {
+  margin: 0;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+}
+
+/* Content revealed by AnimatedContent stays hidden until its animation is set up. */
+.js [data-animate] {
+  visibility: hidden;
+}
+
+.svg-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* ---------- Frame scaling ---------- */
+.viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+.page {
+  position: relative;
+  width: 1920px;
+  background: var(--bg-page);
+  transform-origin: 0 0;
+}
+
+/* ==========================================================================
+   Text styles (mirror the Figma text styles)
+   Sizes come from the Figma "Typography" variables (Desktop / Tablet / Mobile
+   modes); the media queries at the end of this file switch the mode.
+   ========================================================================== */
+.hero__title,
+.benefits__title,
+.card__title {
+  text-wrap: balance;
+}
+
+.hero__lead,
+.card__text {
+  text-wrap: pretty;
+}
+
+.hero__title {            /* Heading/H1 — Geist SemiBold / 120% / -4% */
+  font-weight: 600;
+  font-size: var(--fs-h1);
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+}
+
+.benefits__title {        /* Heading/H2 — Geist SemiBold / 120% / -4% */
+  font-weight: 600;
+  font-size: var(--fs-h2);
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+}
+
+.hero__lead {             /* Subtitle/L — Geist Medium / auto / -2% */
+  font-weight: 500;
+  font-size: var(--fs-subtitle-l);
+  line-height: var(--lh-subtitle-l);
+  letter-spacing: -0.02em;
+}
+
+.card__title,             /* Title/M — Geist SemiBold / auto / -1% */
+.nav__link.nav__link--large {
+  font-weight: 600;
+  font-size: var(--fs-title-m);
+  line-height: var(--lh-title-m);
+  letter-spacing: -0.01em;
+}
+
+.card__text {             /* Body/L — Geist Regular / auto / -1% */
+  font-weight: 400;
+  font-size: var(--fs-body-l);
+  line-height: var(--lh-body-l);
+  letter-spacing: -0.01em;
+}
+
+.btn {                    /* Label/Button — Geist Bold 18 / auto / 0% */
+  font-weight: 700;
+  font-size: var(--fs-label-button);
+  line-height: 23px;
+  letter-spacing: 0;
+}
+
+.nav__link {              /* Label/Nav — Geist Medium 16 / auto / 0%, Title Case */
+  font-weight: 500;
+  font-size: var(--fs-label-nav);
+  line-height: 21px;
+  letter-spacing: 0;
+  text-transform: capitalize;
+}
+
+.contact__phone {         /* Label/Phone — Geist Bold 16 / auto / -7% */
+  font-weight: 700;
+  font-size: var(--fs-label-phone);
+  line-height: 21px;
+  letter-spacing: -0.04em;              /* Figma -7%; -0.04em is the legibility floor */
+}
+
+/* ==========================================================================
+   Glass (Figma "Glass" effect)
+   Frost  -> backdrop blur          Light -> specular rim (drawn in main.js)
+   Refraction / depth / dispersion  -> SVG displacement filter (Chromium only)
+   ========================================================================== */
+.glass {
+  position: relative;
+  background: var(--bg-glass);
+  -webkit-backdrop-filter: blur(var(--glass-frost));
+  backdrop-filter: blur(var(--glass-frost));
+}
+
+/* Specular rim. Fallback gradient ring until main.js draws the exact one. */
+.glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  pointer-events: none;
+  padding: 1px;
+  background: linear-gradient(
+    var(--glass-light-css-angle),
+    rgba(255, 255, 255, var(--glass-light)) 0%,
+    rgba(255, 255, 255, 0) 45%,
+    rgba(255, 255, 255, 0) 55%,
+    rgba(255, 255, 255, calc(var(--glass-light) * 0.5)) 100%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+
+.glass.has-rim::after {
+  padding: 0;
+  background: var(--glass-rim) center / 100% 100% no-repeat;
+  -webkit-mask: none;
+  mask: none;
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass,
+  .glass.glass--card {
+    background: rgba(24, 26, 34, 0.94);
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+}
+
+/* Navbar: frost 4, light -37° @ 80%, refraction 90, depth 16, dispersion 50 */
+.glass--nav {
+  --glass-frost: 2px;               /* Figma blur 4 = CSS blur 2px */
+  --glass-light: 0.8;
+  --glass-light-angle: 323;
+  --glass-light-css-angle: 143deg;
+  --glass-refraction: 0.9;
+  --glass-depth: 16;
+  --glass-dispersion: 0.5;
+}
+
+/* Card caption: frost 48, light -30° @ 20%, refraction 52, depth 18, dispersion 48 */
+.glass--card {
+  background: linear-gradient(var(--bg-scrim), var(--bg-scrim)), var(--bg-glass);
+  --glass-frost: 24px;              /* Figma blur 48 = CSS blur 24px */
+  --glass-light: 0.2;
+  --glass-light-angle: 330;
+  --glass-light-css-angle: 150deg;
+  --glass-refraction: 0.52;
+  --glass-depth: 18;
+  --glass-dispersion: 0.48;
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+.hero {
+  position: relative;
+  height: 1144px;           /* ends with the photo */
+}
+
+/* Light rays background — "Hero Image" 1920 × 1080 @ (0, 3) */
+.hero__rays {
+  position: absolute;
+  left: 0;
+  top: 3px;
+  width: 1920px;
+  height: 1080px;
+}
+
+.light-rays {
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.light-rays__canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------- Header — 1721 × 57 @ (100, 63) ---------- */
+.header {
+  position: absolute;
+  left: 100px;
+  top: 63px;
+  width: 1721px;
+  height: 57px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: block;
+  flex: none;
+  width: 201px;
+  height: 48px;
+}
+
+.logo img {
+  width: 201px;
+  height: 48px;
+  object-fit: cover;
+}
+
+.header__group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: none;
+  width: 1118px;
+}
+
+/* ---------- Navbar (glass pill + Liquid Gooey Nav hover) ---------- */
+[data-gooey-nav] {
+  --nav-pill: var(--bg-inverse);
+  --nav-active-text: var(--text-inverse);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: none;
+  padding: 10px;
+  border-radius: 99px;
+}
+
+.nav__goo {
+  position: absolute;
+  inset: 0;
+  filter: url(#goo);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+[data-gooey-nav].is-hover .nav__goo {
+  opacity: 1;
+}
+
+.nav__pill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-radius: 999px;
+  background: var(--nav-pill);
+  will-change: transform, width, height;
+}
+
+.nav__link {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 37px;
+  padding: 8px 12px;
+  border-radius: 99px;
+  color: var(--text-primary);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s ease;
+  outline: none;
+}
+
+.nav__link.is-active {
+  color: var(--nav-active-text);
+}
+
+/* ---------- Contact ---------- */
+.contact {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 24px;
+  flex: none;
+}
+
+.contact__phone {
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+/* ---------- Buttons (Origin Button: radial fill, follow cursor) ---------- */
+.btn {
+  --btn-fill: var(--bg-inverse);
+  --btn-hover-text: var(--text-inverse);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex: none;
+  height: 55px;
+  padding: 16px 24px;
+  border-radius: 99px;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  isolation: isolate;
+  outline: none;
+  transition: transform 0.25s var(--ease-out-expo);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn--primary {
+  background: var(--bg-accent);
+  color: var(--text-inverse);           /* 7.3:1 on orange; white would be 2.8:1 */
+}
+
+/* 1px inside stroke, white 50% */
+.btn--outline::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border: 1px solid var(--border-default);
+  border-radius: inherit;
+  pointer-events: none;
+  transition: border-color 0.3s var(--ease-out-expo);
+}
+
+.btn--outline.is-hover::after {
+  border-color: var(--border-strong);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 3px;
+}
+
+/* Positioned on the cursor by main.js; the circle itself is the ::before. */
+.btn__fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.btn__fill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: var(--btn-fill);
+  transform: scale(0);
+  transition: transform 0.6s var(--ease-out-expo);
+}
+
+.btn.is-hover .btn__fill::before {
+  transform: scale(1);
+}
+
+.btn__label {
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s var(--ease-out-expo);
+}
+
+.btn.is-hover .btn__label {
+  color: var(--btn-hover-text);
+}
+
+/* ---------- Product — 1130 × 754 @ (395, 496) ---------- */
+.hero__product {
+  position: absolute;
+  left: 419px;              /* a little left of centre so the station + panels read as centred (as in Figma) */
+  top: 586px;
+  width: 1000px;
+  height: 558px;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ---------- Hero content — 956 × 388 @ (482, 168) ---------- */
+.hero__content {
+  position: absolute;
+  left: 482px;
+  top: 168px;
+  width: 956px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.hero__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  text-align: center;
+}
+
+.hero__title,
+.hero__lead {
+  width: 100%;
+}
+
+.hero__lead {
+  color: var(--text-secondary);
+}
+
+/* The grid-independence promise opens the description instead of sitting above the heading. */
+.hero__lead-key {
+  font-weight: inherit;
+  color: var(--text-primary);
+}
+
+/* "за один день": an accent line draws itself under the promise once the hero text has landed. */
+.hero__underline {
+  position: relative;
+  white-space: nowrap;
+}
+
+.hero__underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.06em;
+  height: max(2px, 0.09em);
+  border-radius: 99px;
+  background: var(--bg-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.7s var(--ease-out-expo) 0.15s;
+}
+
+.hero__text.is-revealed .hero__underline::after,
+html:not(.js) .hero__underline::after {
+  transform: scaleX(1);
+}
+
+.hero__title {
+  height: 154px;
+  color: var(--text-primary);
+}
+
+.hero__title-accent {
+  color: var(--text-accent);
+}
+
+.hero__actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* ---------- "Background Shape" — 1920 × 544 @ (0, 706) ---------- */
+.hero__fade {
+  position: absolute;
+  left: 0;
+  top: 675px;               /* from 16% of the photo down to its bottom */
+  width: 1920px;
+  height: 469px;
+  background: linear-gradient(to bottom, rgba(2, 4, 10, 0) 0%, var(--bg-page) 100%);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Benefits — 1720 × 1062 @ (100, 1370)
+   ========================================================================== */
+.benefits {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  margin-top: 120px;
+  padding: 0 100px 63px;
+}
+
+.benefits__title {
+  width: 584px;
+  height: 116px;
+  color: var(--text-primary);
+}
+
+.benefits__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.benefits__row {
+  display: flex;
+  gap: 32px;
+}
+
+/* ---------- Card ---------- */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex: none;
+  width: 552px;
+  height: 433px;
+  border-radius: 32px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.card--wide {
+  flex: 1 1 0;
+  width: auto;
+}
+
+.card__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: var(--card-bg, #0a0a0a);
+}
+
+.card__bg canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.card__info {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  height: 113px;
+  padding: 24px;
+  border-radius: 0 0 32px 32px;
+}
+
+.card__title {
+  color: var(--text-primary);
+}
+
+.card__text {
+  color: var(--text-secondary);
+}
+
+/* ---------- Card background 1: Gradient Bars ---------- */
+.card__bg[data-card-bg="bars"] {
+  --card-bg: rgb(10, 10, 10);
+}
+
+/* Same crop as the Figma fill: the bars run 120px below the card and 207px above it. */
+.bars {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -120px;
+  height: 760px;
+  display: flex;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.bars__bar {
+  flex: 1 0 calc(100% / var(--bars));
+  max-width: calc(100% / var(--bars));
+  height: 100%;
+  background: linear-gradient(to top, var(--orange-500), transparent);
+  transform: scaleY(var(--initial-scale));
+  transform-origin: bottom;
+  animation: pulseBar 2s ease-in-out infinite alternate;
+  animation-delay: calc(var(--i) * 0.1s);
+  outline: 1px solid rgba(0, 0, 0, 0);
+}
+
+@keyframes pulseBar {
+  0% {
+    transform: scaleY(var(--initial-scale));
+  }
+  100% {
+    transform: scaleY(calc(var(--initial-scale) * 0.7));
+  }
+}
+
+/* Dot-field backgrounds paint their own background colour in WebGL */
+.card__bg[data-card-bg="arc"]     { --card-bg: #030303; }
+.card__bg[data-card-bg="horizon"] { --card-bg: #02040a; }
+.card__bg[data-card-bg="echo"]    { --card-bg: #07030a; }
+.card__bg[data-card-bg="signal"]  { --card-bg: #030604; }
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .bars__bar {
+    animation: none;
+  }
+
+  .btn,
+  .btn__fill::before,
+  .btn__label,
+  .nav__goo,
+  .nav__link {
+    transition-duration: 0.01ms;
+  }
+}
+
+/* ==========================================================================
+   Menu button + menu panel (Figma: "Menu Button", "Mobile Menu")
+   Hidden on desktop; used by the tablet and mobile layouts.
+   ========================================================================== */
+.menu-btn,
+.menu {
+  display: none;
+}
+
+.menu-btn {
+  position: relative;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  border-radius: 99px;
+  color: var(--text-primary);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menu-btn:focus-visible {
+  outline: 2px solid var(--border-strong);
+  outline-offset: 3px;
+}
+
+.menu-btn__bar {
+  position: absolute;
+  left: 15px;
+  top: 23px;
+  width: 18px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--text-primary);
+  transition: transform 0.25s var(--ease-out-expo), width 0.25s var(--ease-out-expo), left 0.25s var(--ease-out-expo);
+}
+
+.menu-btn__bar:first-child { transform: translateY(-3px); }
+.menu-btn__bar:last-child  { transform: translateY(3px); }
+
+.is-menu-open .menu-btn__bar {
+  left: 14px;
+  width: 20px;
+}
+
+.is-menu-open .menu-btn__bar:first-child { transform: rotate(45deg); }
+.is-menu-open .menu-btn__bar:last-child  { transform: rotate(-45deg); }
+
+.menu {
+  position: absolute;
+  top: calc(100% + 16px);
+  right: 0;
+  z-index: 20;
+  flex-direction: column;
+  gap: 24px;
+  width: 358px;
+  padding: 24px;
+  border-radius: 32px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px) scale(0.98);
+  transform-origin: top right;
+  transition:
+    opacity 0.2s ease,
+    transform 0.3s var(--ease-out-expo),
+    visibility 0s linear 0.3s;
+}
+
+.is-menu-open .menu {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition:
+    opacity 0.2s ease,
+    transform 0.3s var(--ease-out-expo),
+    visibility 0s;
+}
+
+.menu__links {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.nav__link--large {
+  height: auto;
+  padding: 12px 20px;
+  text-transform: none;
+}
+
+.menu__divider {
+  height: 1px;
+  background: var(--white-a10);
+}
+
+.menu__contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.menu__contact .btn {
+  display: flex;
+  width: 100%;
+}
+
+/* ==========================================================================
+   Tablet — Figma frame "Tablet — 960" (768–1279 px, fluid)
+   ========================================================================== */
+@media (max-width: 1279px) {
+  :root {                      /* Typography mode: Tablet */
+    --fs-h1: 48px;
+    --fs-h2: 40px;
+    --fs-subtitle-l: 24px;
+    --lh-subtitle-l: 31px;
+    --fs-subtitle-m: 20px;
+    --lh-subtitle-m: 26px;
+    --fs-title-m: 22px;
+    --lh-title-m: 29px;
+    --fs-body-l: 18px;
+    --lh-body-l: 24px;
+
+    --pad: 40px;
+    --product-w: min(760px, 79.17vw);
+  }
+
+  .page {
+    width: 100%;
+    transform: none !important;
+  }
+
+  /* ---------- hero ---------- */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    padding-top: 32px;
+  }
+
+  .hero__rays {
+    top: 0;
+    width: 100%;
+    height: 860px;
+  }
+
+  .header {
+    position: relative;
+    left: auto;
+    top: auto;
+    z-index: 10;
+    width: calc(100% - var(--pad) * 2);
+    height: 48px;
+    gap: 16px;
+  }
+
+  .header__group {
+    width: auto;
+    margin-left: auto;
+  }
+
+  .header .nav {
+    display: none;
+  }
+
+  .contact {
+    gap: 16px;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .menu {
+    display: flex;
+  }
+
+  .hero__content {
+    position: relative;
+    left: auto;
+    top: auto;
+    z-index: 1;
+    order: 1;
+    width: calc(100% - var(--pad) * 2);
+    margin-top: 64px;
+  }
+
+  .hero__title {
+    height: auto;
+  }
+
+  .hero__product {
+    position: relative;
+    left: calc(var(--product-w) * -0.046);   /* shifted left so it reads as centred (Figma: x 65 of 960) */
+    top: auto;
+    order: 2;
+    flex: none;
+    width: var(--product-w);
+    height: auto;
+    margin-top: 34px;         /* 40px of air between the buttons and the art */
+  }
+
+  .hero__fade {
+    top: auto;
+    bottom: 0;
+    z-index: 1;               /* the product has order: 2, which would paint it over the fade */
+    width: 100%;
+    height: calc(var(--product-w) * 0.4688);   /* 84% of the photo height (2000×1116) */
+  }
+
+  /* ---------- benefits ---------- */
+  .benefits {
+    gap: 40px;
+    margin-top: 0;
+    padding: 80px var(--pad);
+  }
+
+  .benefits__title {
+    width: 480px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .benefits__cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .benefits__row {
+    display: contents;
+  }
+
+  .card,
+  .card--wide {
+    width: auto;
+    height: 380px;
+  }
+
+  .card .card__info {
+    height: auto;
+  }
+
+  .card--5 {
+    grid-column: 1 / -1;
+  }
+
+}
+
+/* The phone number leaves the header when there is no room for it (it stays in the menu). */
+@media (max-width: 879px) {
+  .header__group .contact__phone {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Mobile — Figma frame "Mobile — 390" (≤ 767 px, fluid)
+   ========================================================================== */
+@media (max-width: 767px) {
+  :root {                      /* Typography mode: Mobile */
+    --fs-h1: 30px;
+    --fs-h2: 28px;
+    --fs-subtitle-l: 18px;
+    --lh-subtitle-l: 24px;
+    --fs-subtitle-m: 16px;
+    --lh-subtitle-m: 21px;
+    --fs-title-m: 20px;
+    --lh-title-m: 26px;
+    --fs-body-l: 16px;
+    --lh-body-l: 21px;
+
+    --pad: 16px;
+    --product-w: min(376px, 96.41vw);
+  }
+
+  .hero {
+    padding-top: 16px;
+  }
+
+  .hero__rays {
+    height: 700px;
+  }
+
+  .logo,
+  .logo img {
+    width: 168px;
+    height: 40px;
+  }
+
+  .header__group .contact {
+    display: none;
+  }
+
+  .menu {
+    width: 100%;
+  }
+
+  .hero__content {
+    margin-top: 40px;
+  }
+
+  .hero__lead .hero__lead-wrap {
+    display: none;
+  }
+
+  .hero__product {
+    left: calc(var(--product-w) * -0.0346);  /* Figma: x -6 of 390 */
+    margin-top: 44px;         /* ~47px of air between the buttons and the art */
+  }
+
+
+  .benefits {
+    gap: 24px;
+    padding: 64px var(--pad);
+  }
+
+  .benefits__title {
+    width: 100%;
+  }
+
+  .benefits__cards {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .card,
+  .card--wide {
+    height: 320px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu,
+  .menu-btn__bar {
+    transition-duration: 0.01ms;
+  }
+
+  .hero__underline::after {
+    transition: none;
+  }
+}
+

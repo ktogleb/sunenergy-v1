@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SUN Energy — Сонячна електростанція для квартир і будинків</title>
+  <meta name="description" content="Легко встановлюється самостійно на балконі вашої квартири, генеруючи електроенергію з першого дня.">
+  <meta name="theme-color" content="#02040A">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- lets CSS hide content that js/animated-content.js reveals, before it paints -->
+  <script>
+    document.documentElement.classList.add('js');
+  </script>
+</head>
+<body>
+  <!-- The Figma frame is 1920 px wide. .page keeps the exact Figma pixel values
+       and is scaled to the viewport width by js/main.js. -->
+  <div class="viewport" id="viewport">
+    <main class="page" id="page">
+
+      <!-- ========================= Hero ========================= -->
+      <section class="hero" id="top">
+        <!-- React Bits <LightRays /> (vanilla port, js/light-rays.js) -->
+        <div class="hero__rays" id="light-rays" aria-hidden="true"></div>
+
+        <header class="header">
+          <a class="logo" href="#top" aria-label="SUN Energy">
+            <img src="assets/logo.webp" alt="SUN Energy, сучасні рішення для дому" width="201" height="48" fetchpriority="high">
+          </a>
+
+          <div class="header__group">
+            <nav class="nav glass glass--nav" aria-label="Головна навігація" data-gooey-nav>
+              <div class="nav__goo" aria-hidden="true"><span class="nav__pill"></span></div>
+              <a class="nav__link" href="#how-it-works">Як працює</a>
+              <a class="nav__link" href="#benefits">Переваги</a>
+              <a class="nav__link" href="#pricing">Вартість</a>
+              <a class="nav__link" href="#reviews">Відгуки</a>
+              <a class="nav__link" href="#contact">Контакти</a>
+            </nav>
+
+            <div class="contact">
+              <a class="contact__phone" href="tel:+380962452425">+38 (096) 245 - 24 -25</a>
+              <a class="btn btn--outline" href="#contact" data-origin-button>
+                <span class="btn__fill" aria-hidden="true"></span>
+                <span class="btn__label">Отримати Консультацію</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Tablet / mobile: Figma "Menu Button" + "Mobile Menu" -->
+          <button class="menu-btn glass glass--nav" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Відкрити меню" data-menu-toggle>
+            <span class="menu-btn__bar"></span>
+            <span class="menu-btn__bar"></span>
+          </button>
+
+          <div class="menu glass glass--card" id="site-menu" inert>
+            <nav class="menu__links" aria-label="Меню" data-gooey-nav>
+              <div class="nav__goo" aria-hidden="true"><span class="nav__pill"></span></div>
+              <a class="nav__link nav__link--large" href="#how-it-works">Як працює</a>
+              <a class="nav__link nav__link--large" href="#benefits">Переваги</a>
+              <a class="nav__link nav__link--large" href="#pricing">Вартість</a>
+              <a class="nav__link nav__link--large" href="#reviews">Відгуки</a>
+              <a class="nav__link nav__link--large" href="#contact">Контакти</a>
+            </nav>
+            <div class="menu__divider" aria-hidden="true"></div>
+            <div class="menu__contact">
+              <a class="contact__phone" href="tel:+380962452425">+38 (096) 245 - 24 -25</a>
+              <a class="btn btn--outline" href="#contact" data-origin-button>
+                <span class="btn__fill" aria-hidden="true"></span>
+                <span class="btn__label">Отримати Консультацію</span>
+              </a>
+            </div>
+          </div>
+        </header>
+
+        <img class="hero__product" data-animate data-animate-trigger="mount" data-animate-delay="0.32" src="assets/power-station.webp" alt="Портативна електростанція та сонячні панелі" width="1000" height="558" fetchpriority="high" decoding="async">
+
+        <div class="hero__content">
+          <div class="hero__text" data-animate data-animate-trigger="mount" data-animate-stagger="0.08">
+            <h1 class="hero__title">Сонячна Електростанція<br><span class="hero__title-accent">для Квартир і Будинків</span></h1>
+            <p class="hero__lead"><strong class="hero__lead-key">Незалежність від мережі <span class="hero__underline">за один день</span>.</strong><br>Легко встановлюється самостійно на балконі вашої квартири, <br class="hero__lead-wrap">генеруючи електроенергію з першого дня.</p>
+          </div>
+
+          <div class="hero__actions" data-animate data-animate-trigger="mount" data-animate-delay="0.24">
+            <a class="btn btn--primary" href="#contact" data-origin-button>
+              <span class="btn__fill" aria-hidden="true"></span>
+              <span class="btn__label">Замовити</span>
+            </a>
+            <a class="btn btn--outline" href="#pricing" data-origin-button>
+              <span class="btn__fill" aria-hidden="true"></span>
+              <span class="btn__label">Вартість</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero__fade" aria-hidden="true"></div>
+      </section>
+
+      <!-- ======================= Benefits ======================= -->
+      <section class="benefits" id="benefits">
+        <h2 class="benefits__title" data-animate>Ви, напевно, як і наші клієнти, хотіли б</h2>
+
+        <div class="benefits__cards">
+          <div class="benefits__row">
+            <article class="card card--1" data-animate data-animate-row="0.08">
+              <div class="card__bg" data-card-bg="bars" aria-hidden="true"></div>
+              <div class="card__info glass glass--card">
+                <h3 class="card__title">Не дивитись графіки споживання</h3>
+                <p class="card__text">Безперебійно користуватись Приладами</p>
+              </div>
+            </article>
+
+            <article class="card card--2" data-animate data-animate-row="0.08">
+              <div class="card__bg" data-card-bg="arc" aria-hidden="true"></div>
+              <div class="card__info glass glass--card">
+                <h3 class="card__title">Забути про шум, вихлопні гази</h3>
+                <p class="card__text">Система повністю безшумна</p>
+              </div>
+            </article>
+
+            <article class="card card--3" data-animate data-animate-row="0.08">
+              <div class="card__bg" data-card-bg="horizon" aria-hidden="true"></div>
+              <div class="card__info glass glass--card">
+                <h3 class="card__title">Не шукати місце для встановлення</h3>
+                <p class="card__text">Захист від води, пилу, спеки 60°C, морозу –20°C</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="benefits__row">
+            <article class="card card--4 card--wide" data-animate data-animate-row="0.08">
+              <div class="card__bg" data-card-bg="echo" aria-hidden="true"></div>
+              <div class="card__info glass glass--card">
+                <h3 class="card__title">Не купувати “коробку” яка буде стояти до зими</h3>
+                <p class="card__text">Генерація Зменшує рахунки на 50-75%</p>
+              </div>
+            </article>
+
+            <article class="card card--5 card--wide" data-animate data-animate-row="0.08">
+              <div class="card__bg" data-card-bg="signal" aria-hidden="true"></div>
+              <div class="card__info glass glass--card">
+                <h3 class="card__title">Не перемикатись, коли світло повернулось</h3>
+                <p class="card__text">Повністю автоматична система</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- SVG filters: goo for the navbar pill (Liquid Gooey Nav); glass refraction filters are added by js/main.js -->
+  <svg class="svg-defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="goo">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur"/>
+        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- GSAP + ScrollTrigger: dependency of AnimatedContent (React Bits) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/animated-content.js"></script>
+  <script src="js/light-rays.js"></script>
+  <script src="js/card-backgrounds.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
