@@ -138,17 +138,17 @@ img {
   text-wrap: pretty;
 }
 
-.hero__title {            /* Heading/H1 — Geist SemiBold / 120% / -4% */
+.hero__title {            /* Heading/H1 — Geist SemiBold / 100% / -4% */
   font-weight: 600;
   font-size: var(--fs-h1);
-  line-height: 1.2;
+  line-height: 1;
   letter-spacing: -0.04em;
 }
 
-.benefits__title {        /* Heading/H2 — Geist SemiBold / 120% / -4% */
+.benefits__title {        /* Heading/H2 — Geist SemiBold / 100% / -4% */
   font-weight: 600;
   font-size: var(--fs-h2);
-  line-height: 1.2;
+  line-height: 1;
   letter-spacing: -0.04em;
 }
 
@@ -569,7 +569,7 @@ html:not(.js) .hero__underline::after {
 }
 
 .hero__title {
-  height: 154px;
+  height: 128px;            /* two lines at 100% */
   color: var(--text-primary);
 }
 
@@ -594,7 +594,7 @@ html:not(.js) .hero__underline::after {
 }
 
 /* ==========================================================================
-   Benefits — 1720 × 1062 @ (100, 1370)
+   Benefits — 1720 × 1042 @ (100, 1264)
    ========================================================================== */
 .benefits {
   position: relative;
@@ -607,7 +607,7 @@ html:not(.js) .hero__underline::after {
 
 .benefits__title {
   width: 584px;
-  height: 116px;
+  height: 96px;             /* two lines at 100% */
   color: var(--text-primary);
 }
 
